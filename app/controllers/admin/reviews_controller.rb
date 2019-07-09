@@ -2,7 +2,7 @@ class Admin::ReviewsController < Admin::BaseController
   before_action :load_review, only: [:destroy]
 
   def index
-    @reviews = Review.all.order_by_time_desc.paginate(
+    @reviews = Review.order_by_time_desc.paginate(
       page: params[:page], per_page: Settings.review_per_page_admin
     )
   end

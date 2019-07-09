@@ -1,5 +1,5 @@
 class Admin::CategoriesController < Admin::BaseController
-  before_action :load_category, only: [:destroy]
+  before_action :load_category, only: :destroy
 
   def index
     @categories = Category.order_by_time_desc.paginate(

@@ -19,7 +19,7 @@ class Admin::BookingsController < Admin::BaseController
 
   def load_booking
     @booking = Booking.find_by_id params[:id]
-    return @booking if @booking
+    return if @booking
     flash[:danger] = t("controller.flash.load_booking_failed")
     redirect_to root_path
   end

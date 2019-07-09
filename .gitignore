@@ -9,6 +9,8 @@
 /app/helpers/*
 /.bundle
 public/*
+
+
 # Ignore all logfiles and tempfiles.
 /log/*
 /tmp/*

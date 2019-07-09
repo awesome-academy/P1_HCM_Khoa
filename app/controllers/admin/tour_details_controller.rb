@@ -5,9 +5,7 @@ class Admin::TourDetailsController < Admin::BaseController
   end
 
   def index
-    @tour_details = TourDetail.where(
-      tour_id: params[:id]
-    ).order_by_time_desc.paginate(
+    @tour_details = TourDetail.t_id(params[:id]).order_by_time_desc.paginate(
       page: params[:page], per_page: Settings.tour_detail_per_page
     )
   end
@@ -42,7 +40,7 @@ class Admin::TourDetailsController < Admin::BaseController
 
   def load_tour_detail
     @tour_detail = TourDetail.find_by_id params[:id]
-    return @tour_detail unless @tour_detail.nil?
+    return if @tour_detail
     flash[:danger] = t("controller.flash.load_tour_detail_failed")
     redirect_to root_path
   end
